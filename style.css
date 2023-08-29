@@ -11,6 +11,7 @@ body {
 	justify-content: center;
 	align-items: center;
 	background-color: black;
+	font-family: "Roboto", sans-serif;
 }
 
 .ping-pong-section {
@@ -47,7 +48,7 @@ body {
 }
 
 .hero-text {
-	margin-bottom: 1.5em;
+	margin: 1rem 0;
 	z-index: 2;
 	color: antiquewhite;
 }
@@ -70,7 +71,7 @@ body {
 }
 
 .scores p:nth-of-type(1) {
-    font-size: 2rem;
+	font-size: 2rem;
 }
 
 .buttons-container {
@@ -86,18 +87,32 @@ button {
 	border: none;
 	color: white;
 	font-weight: bold;
+    transition: background-color.3s;
 }
 
-.player1 {
+.player1-btn {
 	background-color: #377bcf;
 }
 
-.player2 {
+.player1-btn:hover {
+	background-color: #255fa7;
+}
+
+.player2-btn {
 	background-color: #c53333;
 }
 
-.reset {
+.player2-btn:hover {
+    background-color: #9e1f1f;
+
+}
+
+.reset-btn {
 	background-color: white;
 	border: 2px solid #c53333;
 	color: red;
+}
+
+.reset-btn:hover {
+    background-color: rgb(245, 218, 218);
 }
