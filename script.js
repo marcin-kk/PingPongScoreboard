@@ -1,53 +1,51 @@
-const scoreSpan1 = document.querySelector(".score1")
-const scoreSpan2 = document.querySelector(".score2")
-const playerBtn1 = document.querySelector(".player1-btn")
-const playerBtn2 = document.querySelector(".player2-btn")
 const resetBtn = document.querySelector(".reset-btn")
 const select = document.querySelector("#score-select")
-
-let score1 = 0
-let score2 = 0
 let isGameOver = false
 let playingToValue = parseInt(select.value)
+const player1 = {
+	score: 0,
+	button: document.querySelector(".player1-btn"),
+	span: document.querySelector(".score1"),
+}
+const player2 = {
+	score: 0,
+	button: document.querySelector(".player2-btn"),
+	span: document.querySelector(".score2"),
+}
 
 const resetScores = () => {
-	score1 = 0
-	score2 = 0
-	scoreSpan1.textContent = score1
-	scoreSpan2.textContent = score2
-	scoreSpan1.classList.remove("winner", "loser")
-	scoreSpan2.classList.remove("winner", "loser")
+	for (let p of [player1, player2]) {
+		p.score = 0
+		p.span.textContent = 0
+		p.span.classList.remove("winner", "loser")
+	}
+
 	playingToValue = parseInt(select.value)
-    isGameOver = false
+	isGameOver = false
 }
+
+const updateScores = (player, opponent) => {
+	if (!isGameOver) {
+		player.score++
+		if (player.score === playingToValue) {
+			isGameOver = true
+			player.span.classList.add("winner")
+			opponent.span.classList.add("loser")
+		}
+	}
+	player.span.textContent = player.score
+}
+
+player1.button.addEventListener("click", () => {
+	updateScores(player1, player2)
+})
+
+player2.button.addEventListener("click", () => {
+	updateScores(player2, player1)
+})
 
 select.addEventListener("change", () => {
 	resetScores()
 })
-
-playerBtn1.addEventListener("click", () => {
-	if (!isGameOver) {
-		score1++
-		if (score1 === playingToValue) {
-			isGameOver = true
-			scoreSpan1.classList.add("winner")
-			scoreSpan2.classList.add("loser")
-		}
-	}
-	scoreSpan1.textContent = score1
-})
-
-playerBtn2.addEventListener("click", () => {
-	if (!isGameOver) {
-		score2++
-		if (score2 === playingToValue) {
-			isGameOver = true
-			scoreSpan2.classList.add("winner")
-			scoreSpan1.classList.add("loser")
-		}
-	}
-	scoreSpan2.textContent = score2
-})
-
 
 resetBtn.addEventListener("click", resetScores)
