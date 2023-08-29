@@ -9,32 +9,45 @@ let score1 = 0
 let score2 = 0
 let playingToValue = select.value
 
-select.addEventListener("change", () => {
-	playingToValue = select.value
-	console.log(playingToValue)
-})
-
-playerBtn1.addEventListener("click", () => {
-	if (score1 < playingToValue) {
-		score1++
-		scoreSpan1.textContent = score1
-	}
-})
-
-playerBtn2.addEventListener("click", () => {
-	if (score2 < playingToValue) {
-		score2++
-		scoreSpan2.textContent = score2
-	}
-})
-
 const resetScores = () => {
 	score1 = 0
 	score2 = 0
 	scoreSpan1.textContent = score1
 	scoreSpan2.textContent = score2
+	scoreSpan1.style.color = "black"
+	scoreSpan2.style.color = "black"
+	playingToValue = select.value
+	playerBtn1.disabled = false
+	playerBtn2.disabled = false
 }
 
-resetBtn.addEventListener("click", resetScores)
+select.addEventListener("change", () => {
+	resetScores()
+	playingToValue = select.value
+})
 
-console.dir(select)
+playerBtn1.addEventListener("click", () => {
+	score1++
+	if (score1 < playingToValue) {
+		scoreSpan1.textContent = score1
+	} else if (score1 == playingToValue) {
+		scoreSpan1.textContent = score1
+		scoreSpan1.style.color = "green"
+		scoreSpan2.style.color = "red"
+		playerBtn2.disabled = true
+	}
+})
+
+playerBtn2.addEventListener("click", () => {
+	score2++
+	if (score2 < playingToValue) {
+		scoreSpan2.textContent = score2
+	} else if (score2 == playingToValue) {
+		scoreSpan2.textContent = score2
+		scoreSpan2.style.color = "green"
+		scoreSpan1.style.color = "red"
+		playerBtn1.disabled = true
+	}
+})
+
+resetBtn.addEventListener("click", resetScores)
