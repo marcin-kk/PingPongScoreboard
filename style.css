@@ -10,6 +10,7 @@ body {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	background-color: black;
 }
 
 .ping-pong-section {
@@ -17,8 +18,10 @@ body {
 	width: 100%;
 	height: 60%;
 	max-width: 500px;
-	background-color: green;
-    box-shadow: 2px 2px 2px black;
+	border-radius: 25px;
+	padding: 10px;
+	background-color: #b9af9b;
+	box-shadow: -1px -1px 8px 0px #b9af9b;
 }
 
 .hero-img {
@@ -31,6 +34,8 @@ body {
 	display: flex;
 	justify-content: center;
 	align-items: flex-end;
+	border-radius: 20px;
+	overflow: hidden;
 }
 
 .hero-shadow {
@@ -48,7 +53,7 @@ body {
 }
 
 .scores {
-	background-color: blue;
+	background-color: #b9af9b;
 	height: 40%;
 	display: flex;
 	flex-direction: column;
@@ -60,13 +65,39 @@ body {
 	margin-top: 2em;
 }
 
+.playing-to label {
+	font-weight: bold;
+}
+
+.scores p:nth-of-type(1) {
+    font-size: 2rem;
+}
+
 .buttons-container {
 	width: 100%;
 	display: flex;
 	justify-content: space-evenly;
 }
 
-.buttons-container button {
-	width: 33%;
+button {
+	width: 32%;
 	height: 40px;
+	border-radius: 10px;
+	border: none;
+	color: white;
+	font-weight: bold;
+}
+
+.player1 {
+	background-color: #377bcf;
+}
+
+.player2 {
+	background-color: #c53333;
+}
+
+.reset {
+	background-color: white;
+	border: 2px solid #c53333;
+	color: red;
 }
