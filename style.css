@@ -74,6 +74,14 @@ body {
 	font-size: 2rem;
 }
 
+.winner {
+    color: green;
+}
+
+.loser {
+    color: red;
+}
+
 .buttons-container {
 	width: 100%;
 	display: flex;
